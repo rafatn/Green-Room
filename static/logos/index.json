@@ -1,0 +1,776 @@
+{
+  "AAPL": {
+    "file": "AAPL.svg",
+    "name": "Apple Inc.",
+    "slug": "apple",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MSFT": {
+    "file": "MSFT.svg",
+    "name": "Microsoft Corporation",
+    "slug": "microsoft",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NVDA": {
+    "file": "NVDA.svg",
+    "name": "NVIDIA Corporation",
+    "slug": "nvidia",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "AMZN": {
+    "file": "AMZN.svg",
+    "name": "Amazon.com Inc.",
+    "slug": "amazon",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "GOOGL": {
+    "file": "GOOGL.svg",
+    "name": "Alphabet Inc. Class A",
+    "slug": "google",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "GOOG": {
+    "file": "GOOG.svg",
+    "name": "Alphabet Inc. Class C",
+    "slug": "google",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "META": {
+    "file": "META.svg",
+    "name": "Meta Platforms Inc.",
+    "slug": "meta",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TSLA": {
+    "file": "TSLA.svg",
+    "name": "Tesla Inc.",
+    "slug": "tesla",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "AVGO": {
+    "file": "AVGO.svg",
+    "name": "Broadcom Inc.",
+    "slug": "broadcom",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "AMD": {
+    "file": "AMD.svg",
+    "name": "Advanced Micro Devices",
+    "slug": "amd",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NFLX": {
+    "file": "NFLX.svg",
+    "name": "Netflix Inc.",
+    "slug": "netflix",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ADBE": {
+    "file": "ADBE.svg",
+    "name": "Adobe Inc.",
+    "slug": "adobe",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CRM": {
+    "file": "CRM.svg",
+    "name": "Salesforce Inc.",
+    "slug": "salesforce",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ORCL": {
+    "file": "ORCL.svg",
+    "name": "Oracle Corporation",
+    "slug": "oracle",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CSCO": {
+    "file": "CSCO.svg",
+    "name": "Cisco Systems",
+    "slug": "cisco",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "INTC": {
+    "file": "INTC.svg",
+    "name": "Intel Corporation",
+    "slug": "intel",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "QCOM": {
+    "file": "QCOM.svg",
+    "name": "Qualcomm",
+    "slug": "qualcomm",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TXN": {
+    "file": "TXN.svg",
+    "name": "Texas Instruments",
+    "slug": "texasinstruments",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "AMAT": {
+    "file": "AMAT.svg",
+    "name": "Applied Materials",
+    "slug": "appliedmaterials",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MU": {
+    "file": "MU.svg",
+    "name": "Micron Technology",
+    "slug": "microntechnology",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "LRCX": {
+    "file": "LRCX.svg",
+    "name": "Lam Research",
+    "slug": "lamresearch",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ASML": {
+    "file": "ASML.svg",
+    "name": "ASML Holding ADR",
+    "slug": "asml",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TSM": {
+    "file": "TSM.svg",
+    "name": "Taiwan Semiconductor ADR",
+    "slug": "tsmc",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ARM": {
+    "file": "ARM.svg",
+    "name": "Arm Holdings ADR",
+    "slug": "arm",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "JPM": {
+    "file": "JPM.svg",
+    "name": "JPMorgan Chase",
+    "slug": "jpmorganchase",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "BAC": {
+    "file": "BAC.svg",
+    "name": "Bank of America",
+    "slug": "bankofamerica",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "WFC": {
+    "file": "WFC.svg",
+    "name": "Wells Fargo",
+    "slug": "wellsfargo",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "C": {
+    "file": "C.svg",
+    "name": "Citigroup",
+    "slug": "citibank",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "GS": {
+    "file": "GS.svg",
+    "name": "Goldman Sachs",
+    "slug": "goldmansachs",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MS": {
+    "file": "MS.svg",
+    "name": "Morgan Stanley",
+    "slug": "morganstanley",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "V": {
+    "file": "V.svg",
+    "name": "Visa",
+    "slug": "visa",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MA": {
+    "file": "MA.svg",
+    "name": "Mastercard",
+    "slug": "mastercard",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "AXP": {
+    "file": "AXP.svg",
+    "name": "American Express",
+    "slug": "americanexpress",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "BRK-B": {
+    "file": "BRK_B.svg",
+    "name": "Berkshire Hathaway Class B",
+    "slug": "berkshirehathaway",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "JNJ": {
+    "file": "JNJ.svg",
+    "name": "Johnson & Johnson",
+    "slug": "johnsonandjohnson",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "LLY": {
+    "file": "LLY.svg",
+    "name": "Eli Lilly",
+    "slug": "eli",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "PFE": {
+    "file": "PFE.svg",
+    "name": "Pfizer",
+    "slug": "pfizer",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MRK": {
+    "file": "MRK.svg",
+    "name": "Merck",
+    "slug": "merck",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ABBV": {
+    "file": "ABBV.svg",
+    "name": "AbbVie",
+    "slug": "abbvie",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "AMGN": {
+    "file": "AMGN.svg",
+    "name": "Amgen",
+    "slug": "amgen",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "GILD": {
+    "file": "GILD.svg",
+    "name": "Gilead Sciences",
+    "slug": "gileadsciences",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "UNH": {
+    "file": "UNH.svg",
+    "name": "UnitedHealth Group",
+    "slug": "unitedhealth",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CVS": {
+    "file": "CVS.svg",
+    "name": "CVS Health",
+    "slug": "cvshealth",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "WMT": {
+    "file": "WMT.svg",
+    "name": "Walmart",
+    "slug": "walmart",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "COST": {
+    "file": "COST.svg",
+    "name": "Costco Wholesale",
+    "slug": "costco",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TGT": {
+    "file": "TGT.svg",
+    "name": "Target",
+    "slug": "target",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "HD": {
+    "file": "HD.svg",
+    "name": "Home Depot",
+    "slug": "homedepot",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "LOW": {
+    "file": "LOW.svg",
+    "name": "Lowe's",
+    "slug": "lowes",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "KO": {
+    "file": "KO.svg",
+    "name": "Coca-Cola",
+    "slug": "cocacola",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "PEP": {
+    "file": "PEP.svg",
+    "name": "PepsiCo",
+    "slug": "pepsi",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MCD": {
+    "file": "MCD.svg",
+    "name": "McDonald's",
+    "slug": "mcdonalds",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SBUX": {
+    "file": "SBUX.svg",
+    "name": "Starbucks",
+    "slug": "starbucks",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NKE": {
+    "file": "NKE.svg",
+    "name": "Nike",
+    "slug": "nike",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "PG": {
+    "file": "PG.svg",
+    "name": "Procter & Gamble",
+    "slug": "procterandgamble",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "XOM": {
+    "file": "XOM.svg",
+    "name": "Exxon Mobil",
+    "slug": "exxonmobil",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CVX": {
+    "file": "CVX.svg",
+    "name": "Chevron",
+    "slug": "chevron",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "COP": {
+    "file": "COP.svg",
+    "name": "ConocoPhillips",
+    "slug": "conocophillips",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CAT": {
+    "file": "CAT.svg",
+    "name": "Caterpillar",
+    "slug": "caterpillar",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "DE": {
+    "file": "DE.svg",
+    "name": "Deere & Company",
+    "slug": "johndeere",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "GE": {
+    "file": "GE.svg",
+    "name": "GE Aerospace",
+    "slug": "geaerospace",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "HON": {
+    "file": "HON.svg",
+    "name": "Honeywell",
+    "slug": "honeywell",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "UPS": {
+    "file": "UPS.svg",
+    "name": "United Parcel Service",
+    "slug": "ups",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "BA": {
+    "file": "BA.svg",
+    "name": "Boeing",
+    "slug": "boeing",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "DIS": {
+    "file": "DIS.svg",
+    "name": "Walt Disney",
+    "slug": "disney",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CMCSA": {
+    "file": "CMCSA.svg",
+    "name": "Comcast",
+    "slug": "comcast",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "T": {
+    "file": "T.svg",
+    "name": "AT&T",
+    "slug": "att",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "VZ": {
+    "file": "VZ.svg",
+    "name": "Verizon",
+    "slug": "verizon",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "IBM": {
+    "file": "IBM.svg",
+    "name": "IBM",
+    "slug": "ibm",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NOW": {
+    "file": "NOW.svg",
+    "name": "ServiceNow",
+    "slug": "servicenow",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "PLTR": {
+    "file": "PLTR.svg",
+    "name": "Palantir Technologies",
+    "slug": "palantir",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SNOW": {
+    "file": "SNOW.svg",
+    "name": "Snowflake",
+    "slug": "snowflake",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "UBER": {
+    "file": "UBER.svg",
+    "name": "Uber Technologies",
+    "slug": "uber",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ABNB": {
+    "file": "ABNB.svg",
+    "name": "Airbnb",
+    "slug": "airbnb",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SHOP": {
+    "file": "SHOP.svg",
+    "name": "Shopify",
+    "slug": "shopify",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "PYPL": {
+    "file": "PYPL.svg",
+    "name": "PayPal",
+    "slug": "paypal",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SQ": {
+    "file": "SQ.svg",
+    "name": "Block",
+    "slug": "block",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "COIN": {
+    "file": "COIN.svg",
+    "name": "Coinbase Global",
+    "slug": "coinbase",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "RIVN": {
+    "file": "RIVN.svg",
+    "name": "Rivian",
+    "slug": "rivian",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "F": {
+    "file": "F.svg",
+    "name": "Ford Motor",
+    "slug": "ford",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "GM": {
+    "file": "GM.svg",
+    "name": "General Motors",
+    "slug": "generalmotors",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TMO": {
+    "file": "TMO.svg",
+    "name": "Thermo Fisher Scientific",
+    "slug": "thermofisherscientific",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "DHR": {
+    "file": "DHR.svg",
+    "name": "Danaher",
+    "slug": "danaher",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ISRG": {
+    "file": "ISRG.svg",
+    "name": "Intuitive Surgical",
+    "slug": "intuitive",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "VRTX": {
+    "file": "VRTX.svg",
+    "name": "Vertex Pharmaceuticals",
+    "slug": "vertex",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "REGN": {
+    "file": "REGN.svg",
+    "name": "Regeneron Pharmaceuticals",
+    "slug": "regeneron",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "LMT": {
+    "file": "LMT.svg",
+    "name": "Lockheed Martin",
+    "slug": "lockheedmartin",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "RTX": {
+    "file": "RTX.svg",
+    "name": "RTX Corporation",
+    "slug": "rtx",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NOC": {
+    "file": "NOC.svg",
+    "name": "Northrop Grumman",
+    "slug": "northropgrumman",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NEE": {
+    "file": "NEE.svg",
+    "name": "NextEra Energy",
+    "slug": "nexteraenergy",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "DUK": {
+    "file": "DUK.svg",
+    "name": "Duke Energy",
+    "slug": "dukeenergy",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SO": {
+    "file": "SO.svg",
+    "name": "Southern Company",
+    "slug": "southerncompany",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SPY": {
+    "file": "SPY.svg",
+    "name": "SPDR S&P 500 ETF Trust",
+    "slug": "ssga",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "QQQ": {
+    "file": "QQQ.svg",
+    "name": "Invesco QQQ Trust",
+    "slug": "invesco",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "IWM": {
+    "file": "IWM.svg",
+    "name": "iShares Russell 2000 ETF",
+    "slug": "ishares",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "VOO": {
+    "file": "VOO.svg",
+    "name": "Vanguard S&P 500 ETF",
+    "slug": "vanguard",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "VTI": {
+    "file": "VTI.svg",
+    "name": "Vanguard Total Stock Market ETF",
+    "slug": "vanguard",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TEVA.TA": {
+    "file": "TEVA.TA.svg",
+    "name": "Teva Pharmaceutical Industries",
+    "slug": "teva",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NICE.TA": {
+    "file": "NICE.TA.svg",
+    "name": "NICE Ltd.",
+    "slug": "nice",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ICL.TA": {
+    "file": "ICL.TA.svg",
+    "name": "ICL Group",
+    "slug": "icl",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "LUMI.TA": {
+    "file": "LUMI.TA.svg",
+    "name": "Bank Leumi",
+    "slug": "leumi",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "POLI.TA": {
+    "file": "POLI.TA.svg",
+    "name": "Bank Hapoalim",
+    "slug": "bankhapoalim",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TSEM.TA": {
+    "file": "TSEM.TA.svg",
+    "name": "Tower Semiconductor",
+    "slug": "towersemiconductor",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ELAL.TA": {
+    "file": "ELAL.TA.svg",
+    "name": "El Al Israel Airlines",
+    "slug": "elal",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "FIBI.TA": {
+    "file": "FIBI.TA.svg",
+    "name": "First International Bank of Israel",
+    "slug": "firstinternationalbankofisrael",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "DSCT.TA": {
+    "file": "DSCT.TA.svg",
+    "name": "Israel Discount Bank",
+    "slug": "discountbank",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "BEZQ.TA": {
+    "file": "BEZQ.TA.svg",
+    "name": "Bezeq",
+    "slug": "bezeq",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CEL.TA": {
+    "file": "CEL.TA.svg",
+    "name": "Cellcom Israel",
+    "slug": "cellcom",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ESLT.TA": {
+    "file": "ESLT.TA.svg",
+    "name": "Elbit Systems",
+    "slug": "elbitsystems",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "ENOG.TA": {
+    "file": "ENOG.TA.svg",
+    "name": "Energean",
+    "slug": "energean",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "OPCE.TA": {
+    "file": "OPCE.TA.svg",
+    "name": "OPC Energy",
+    "slug": "opcenergy",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "DLEKG.TA": {
+    "file": "DLEKG.TA.svg",
+    "name": "Delek Group",
+    "slug": "delek",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "AZRG.TA": {
+    "file": "AZRG.TA.svg",
+    "name": "Azrieli Group",
+    "slug": "azrieli",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SKBN.TA": {
+    "file": "SKBN.TA.svg",
+    "name": "Shikun & Binui",
+    "slug": "shikunbinui",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MZTF.TA": {
+    "file": "MZTF.TA.svg",
+    "name": "Mizrahi Tefahot Bank",
+    "slug": "mizrahitefahot",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "PHOE.TA": {
+    "file": "PHOE.TA.svg",
+    "name": "Phoenix Holdings",
+    "slug": "phoenix",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "HARL.TA": {
+    "file": "HARL.TA.svg",
+    "name": "Harel Insurance Investments",
+    "slug": "harel",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "CLIS.TA": {
+    "file": "CLIS.TA.svg",
+    "name": "Clal Insurance",
+    "slug": "clal",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "MELI": {
+    "file": "MELI.svg",
+    "name": "MercadoLibre",
+    "slug": "mercadolibre",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "BABA": {
+    "file": "BABA.svg",
+    "name": "Alibaba Group ADR",
+    "slug": "alibabagroup",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "JD": {
+    "file": "JD.svg",
+    "name": "JD.com ADR",
+    "slug": "jd",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "PDD": {
+    "file": "PDD.svg",
+    "name": "PDD Holdings",
+    "slug": "pdd",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SONY": {
+    "file": "SONY.svg",
+    "name": "Sony Group ADR",
+    "slug": "sony",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "TM": {
+    "file": "TM.svg",
+    "name": "Toyota Motor ADR",
+    "slug": "toyota",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "NVS": {
+    "file": "NVS.svg",
+    "name": "Novartis ADR",
+    "slug": "novartis",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SAP": {
+    "file": "SAP.svg",
+    "name": "SAP SE ADR",
+    "slug": "sap",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "SHEL": {
+    "file": "SHEL.svg",
+    "name": "Shell ADR",
+    "slug": "shell",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "RIO": {
+    "file": "RIO.svg",
+    "name": "Rio Tinto ADR",
+    "slug": "riotinto",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "BP": {
+    "file": "BP.svg",
+    "name": "BP ADR",
+    "slug": "bp",
+    "source": "Simple Icons CDN (brand icon)"
+  },
+  "UL": {
+    "file": "UL.svg",
+    "name": "Unilever ADR",
+    "slug": "unilever",
+    "source": "Simple Icons CDN (brand icon)"
+  }
+}
