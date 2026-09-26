@@ -12,33 +12,101 @@
 .company{border:1px solid var(--line);transition:.18s transform,.18s box-shadow}.company:hover{transform:translateY(-2px);box-shadow:0 8px 24px #00000014}.companyModal{position:fixed;inset:0;background:#15203399;display:none;align-items:center;justify-content:center;padding:20px;z-index:9999;backdrop-filter:blur(5px)}.companyModal.open{display:flex}.companyModalBox{position:relative;width:min(720px,100%);max-height:min(88vh,760px);overflow:auto;background:var(--card);border-radius:24px;padding:28px;box-shadow:0 24px 80px #00000030}.companyModalClose{position:absolute;top:10px;right:12px;width:40px;height:40px;border-radius:50%;font-size:28px;line-height:1;background:#f2f5f9;border:1px solid var(--line);cursor:pointer}.modalHero{display:flex;align-items:center;gap:18px;padding:8px 35px 20px 0;border-bottom:1px solid var(--line)}.modalLogo{width:78px;height:78px;object-fit:contain;border-radius:18px;background:#f7f9fc;padding:10px}.modalSymbol{font-weight:800;color:var(--accent);font-size:14px}.modalHero h2{margin:3px 0 6px}.modalSection{padding:20px 0}.modalSection h3{margin:0 0 8px}.modalSection p{font-size:17px;line-height:1.75;margin:0}.modalFacts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.modalFacts>div{background:#f7f9fc;border-radius:14px;padding:12px}.modalFacts span{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}.companyWebsite{display:inline-block;margin-top:18px;padding:11px 16px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}.modalDisclaimer{margin-top:16px;padding:11px;border-radius:12px;background:#fff5db;color:#6b5300;font-size:12px}.modal-open{overflow:hidden}@media(max-width:600px){.companyModal{padding:8px}.companyModalBox{padding:20px;border-radius:18px}.modalHero{gap:12px}.modalLogo{width:60px;height:60px}.modalSection p{font-size:15px}.modalFacts{grid-template-columns:1fr}.company{min-height:115px}}
 </style>
 </head>
-<body><div class="wrap">
-<header class="top"><div class="brand"><div class="brandmark">GR</div><div><h1 id="brandTitle">Green Room</h1><p id="subtitle">Investment & Market Intelligence</p></div></div><div class="langs" id="langs"></div></header>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand">
+    <div class="brandmark">GR</div>
+    <div><h1 id="brandTitle">Green Room</h1><p id="subtitle">Investment & Market Intelligence</p></div>
+  </div>
+  <div class="langs" id="langs"></div>
+</header>
+
 <div class="card"><h2 data-i="providersTitle">🔑 מצב ספקי API</h2><div id="providers" class="grid"></div><p class="small muted" data-i="keysNote">מפתחות API נשמרים רק ב-FastAPI server. האתר הסטטי לעולם לא מקבל את המפתחות.</p></div>
-<div class="card"><h2 data-i="companiesTitle">1. בחירת חברות</h2><input id="search" style="width:min(100%,500px)" data-ph="search" placeholder="חפש חברה או Symbol" oninput="searchCompanies()"><div id="companies" class="grid"></div><p><span data-i="selectedLabel">נבחרו:</span> <b id="selected">0</b></p></div>
-<div class="card"><h2 data-i="quoteTitle">2. 💰 מחיר מניה עדכני</h2><div class="toolbar"><button onclick="refreshQuotes()" data-i="refresh">🔄 רענן עכשיו</button><label><input type="checkbox" id="auto" checked onchange="setAuto()"> <span data-i="auto">רענון אוטומטי</span></label><span class="muted"><span data-i="every">כל</span> <b id="intervalLabel">15</b> <span data-i="seconds">שניות</span></span></div><div id="quotes" class="quote"></div></div>
-<div class="card"><h2 data-i="historyTitle">3. 📈 היסטוריית מחיר</h2><div class="toolbar"><select id="period" onchange="loadHistory()"><option value="1m">1M</option><option value="3m">3M</option><option value="6m">6M</option><option value="1y" selected>1Y</option><option value="5y">5Y</option><option value="max">MAX</option></select></div><canvas id="historyChart"></canvas><div id="historyInfo"></div></div>
-<div class="card"><h2 data-i="targetTitle">4. 🎯 זמן יעד</h2><div class="grid"><label data-i="initial">הון התחלתי<br><input id="initial" type="number" value="10000"></label><label data-i="monthly">הפקדה חודשית<br><input id="monthly" type="number" value="500"></label><label data-i="target">יעד<br><input id="target" type="number" value="25000"></label><label data-i="years">מקסימום שנים<br><input id="years" type="number" value="10"></label></div><button onclick="runPath()" data-i="calcPath">חשב מסלול לכל חברה</button><div id="out"></div></div>
-<div class="card"><h2 data-i="portfolioTitle">5. 📊 מסלול תיק</h2><p class="muted" data-i="portfolioHint">הזן משקלים באותו סדר של החברות שנבחרו, לדוגמה: 40,30,30</p><input id="weights" placeholder="40,30,30"><input id="portyears" type="number" value="5"><button onclick="runPortfolio()" data-i="calcPortfolio">חשב מסלול תיק</button><div id="portout"></div><canvas id="chart"></canvas></div>
+
+<div class="card">
+  <h2 data-i="companiesTitle">1. בחירת חברות</h2>
+  <input id="search" style="width:min(100%,500px)" data-ph="search" placeholder="חפש חברה או Symbol" oninput="searchCompanies()">
+  <div id="companies" class="grid"></div>
+  <p><span data-i="selectedLabel">נבחרו:</span> <b id="selected">0</b></p>
+</div>
+
+<div class="card">
+  <h2 data-i="quoteTitle">2. 💰 מחיר מניה עדכני</h2>
+  <div class="toolbar">
+    <button onclick="refreshQuotes()" data-i="refresh">🔄 רענן עכשיו</button>
+    <label><input type="checkbox" id="auto" checked onchange="setAuto()"> <span data-i="auto">רענון אוטומטי</span></label>
+    <span class="muted"><span data-i="every">כל</span> <b id="intervalLabel">15</b> <span data-i="seconds">שניות</span></span>
+  </div>
+  <div id="quotes" class="quote"></div>
+</div>
+
+<div class="card">
+  <h2 data-i="historyTitle">3. 📈 היסטוריית מחיר</h2>
+  <div class="toolbar">
+    <select id="period" onchange="loadHistory()">
+      <option value="1m">1M</option><option value="3m">3M</option><option value="6m">6M</option><option value="1y" selected>1Y</option><option value="5y">5Y</option><option value="max">MAX</option>
+    </select>
+  </div>
+  <canvas id="historyChart"></canvas>
+  <div id="historyInfo"></div>
+</div>
+
+<div class="card">
+  <h2 data-i="targetTitle">4. 🎯 זמן יעד</h2>
+  <div class="grid">
+    <label data-i="initial">הון התחלתי<br><input id="initial" type="number" value="10000"></label>
+    <label data-i="monthly">הפקדה חודשית<br><input id="monthly" type="number" value="500"></label>
+    <label data-i="target">יעד<br><input id="target" type="number" value="25000"></label>
+    <label data-i="years">מקסימום שנים<br><input id="years" type="number" value="10"></label>
+  </div>
+  <button onclick="runPath()" data-i="calcPath">חשב מסלול לכל חברה</button>
+  <div id="out"></div>
+</div>
+
+<div class="card">
+  <h2 data-i="portfolioTitle">5. 📊 מסלול תיק</h2>
+  <p class="muted" data-i="portfolioHint">הזן משקלים באותו סדר של החברות שנבחרו, לדוגמה: 40,30,30</p>
+  <input id="weights" placeholder="40,30,30"><input id="portyears" type="number" value="5">
+  <button onclick="runPortfolio()" data-i="calcPortfolio">חשב מסלול תיק</button>
+  <div id="portout"></div>
+  <canvas id="chart"></canvas>
+</div>
+
 <footer class="footer">Green Room · <span data-i="disclaimer">נתוני שוק תלויים בספק, בהרשאות ובתנאי השימוש שלו. תרחישים היסטוריים אינם תחזית.</span></footer>
 </div>
+
 <script>
 const I18N={
- he:{name:'עברית',dir:'rtl',brand:'Green Room',subtitle:'השקעות ומודיעין שוק',providersTitle:'🔑 מצב ספקי API',keysNote:'מפתחות API נקראים מקובץ .env המקומי ואינם נשמרים ב־HTML.',companiesTitle:'1. בחירת חברות',companyInfo:"פרטי החברה",companySummary:"תקציר החברה",companyWebsite:"אתר החברה",search:'חפש חברה או Symbol',selectedLabel:'נבחרו:',quoteTitle:'2. 💰 מחיר מניה עדכני',refresh:'🔄 רענן עכשיו',auto:'רענון אוטומטי',every:'כל',seconds:'שניות',historyTitle:'3. 📈 היסטוריית מחיר',targetTitle:'4. 🎯 זמן יעד',initial:'הון התחלתי',monthly:'הפקדה חודשית',target:'יעד',years:'מקסימום שנים',calcPath:'חשב מסלול לכל חברה',portfolioTitle:'5. 📊 מסלול תיק',portfolioHint:'הזן משקלים באותו סדר של החברות שנבחרו, לדוגמה: 40,30,30',calcPortfolio:'חשב מסלול תיק',disclaimer:'נתוני שוק תלויים בספק, בהרשאות ובתנאי השימוש שלו. תרחישים היסטוריים אינם תחזית.',choose:'בחר לפחות חברה אחת.',one:'בחר חברה אחת כדי להציג גרף היסטורי.',cagr:'CAGR',vol:'תנודתיות',dd:'Max Drawdown',time:'זמן ליעד',error:'שגיאה',noTarget:'לא הגיע ליעד',yearsWord:'שנים',source:'מקור',updated:'עודכן',status:'סטטוס',providerFallback:'ניסיון ספקים',configured:'✓ מוגדר',notConfigured:'לא מוגדר',selectedOne:'בחר חברות',realtime:'REALTIME',historical:'HISTORICAL',eod:'END OF DAY',unavailable:'UNAVAILABLE'},
- en:{name:'English',dir:'ltr',brand:'Green Room',subtitle:'Investment & Market Intelligence',providersTitle:'🔑 API Provider Status',keysNote:'API keys stay only on the FastAPI server and are never exposed to the static site.',companiesTitle:'1. Company Explorer',companyInfo:"Company details",companySummary:"Company summary",companyWebsite:"Company website",search:'Search company or Symbol',selectedLabel:'Selected:',quoteTitle:'2. 💰 Current Stock Price',refresh:'🔄 Refresh now',auto:'Auto refresh',every:'Every',seconds:'seconds',historyTitle:'3. 📈 Price History',targetTitle:'4. 🎯 Time to Target',initial:'Initial capital',monthly:'Monthly contribution',target:'Target',years:'Maximum years',calcPath:'Calculate path for each company',portfolioTitle:'5. 📊 Portfolio Path',portfolioHint:'Enter weights in the same order as selected companies, e.g. 40,30,30',calcPortfolio:'Calculate portfolio path',disclaimer:'Market data depends on provider, entitlements and terms. Historical scenarios are not forecasts.',choose:'Select at least one company.',one:'Select one company to display the historical chart.',cagr:'CAGR',vol:'Volatility',dd:'Max Drawdown',time:'Time to target',error:'Error',noTarget:'Target not reached',yearsWord:'years',source:'Source',updated:'Updated',status:'Status',providerFallback:'Provider attempts',configured:'✓ Configured',notConfigured:'Not configured',selectedOne:'Select companies',realtime:'REALTIME',historical:'HISTORICAL',eod:'END OF DAY',unavailable:'UNAVAILABLE'},
- ru:{name:'Русский',dir:'ltr',brand:'Green Room',subtitle:'Инвестиции и рыночная аналитика',providersTitle:'🔑 Статус API',keysNote:'API-ключи читаются из локального .env и не сохраняются в HTML.',companiesTitle:'1. Выбор компаний',companyInfo:"Сведения о компании",companySummary:"Краткое описание",companyWebsite:"Сайт компании",search:'Поиск компании или символа',selectedLabel:'Выбрано:',quoteTitle:'2. 💰 Текущая цена акции',refresh:'🔄 Обновить',auto:'Автообновление',every:'Каждые',seconds:'сек.',historyTitle:'3. 📈 История цены',targetTitle:'4. 🎯 Время до цели',initial:'Начальный капитал',monthly:'Ежемесячный взнос',target:'Цель',years:'Максимум лет',calcPath:'Рассчитать путь для каждой компании',portfolioTitle:'5. 📊 Путь портфеля',portfolioHint:'Введите веса в порядке выбранных компаний, например: 40,30,30',calcPortfolio:'Рассчитать портфель',disclaimer:'Данные зависят от провайдера и его условий. Исторические сценарии не являются прогнозом.',choose:'Выберите хотя бы одну компанию.',one:'Выберите одну компанию для графика.',cagr:'CAGR',vol:'Волатильность',dd:'Макс. просадка',time:'Время до цели',error:'Ошибка',noTarget:'Цель не достигнута',yearsWord:'лет',source:'Источник',updated:'Обновлено',status:'Статус',providerFallback:'Проверка провайдеров',configured:'✓ Настроен',notConfigured:'Не настроен'},
- ar:{name:'العربية',dir:'rtl',brand:'Green Room',subtitle:'الاستثمار وذكاء السوق',providersTitle:'🔑 حالة مزودي API',keysNote:'تتم قراءة مفاتيح API من ملف .env المحلي ولا تُحفظ في HTML.',companiesTitle:'1. اختيار الشركات',companyInfo:"تفاصيل الشركة",companySummary:"ملخص الشركة",companyWebsite:"موقع الشركة",search:'ابحث عن شركة أو رمز',selectedLabel:'المحدد:',quoteTitle:'2. 💰 سعر السهم الحالي',refresh:'🔄 تحديث الآن',auto:'تحديث تلقائي',every:'كل',seconds:'ثانية',historyTitle:'3. 📈 تاريخ السعر',targetTitle:'4. 🎯 الزمن للوصول إلى الهدف',initial:'رأس المال الابتدائي',monthly:'الإيداع الشهري',target:'الهدف',years:'الحد الأقصى للسنوات',calcPath:'احسب المسار لكل شركة',portfolioTitle:'5. 📊 مسار المحفظة',portfolioHint:'أدخل الأوزان بنفس ترتيب الشركات المختارة، مثال: 40,30,30',calcPortfolio:'احسب مسار المحفظة',disclaimer:'تعتمد بيانات السوق على المزود والصلاحيات وشروط الاستخدام. السيناريوهات التاريخية ليست توقعات.',choose:'اختر شركة واحدة على الأقل.',one:'اختر شركة واحدة لعرض الرسم التاريخي.',cagr:'CAGR',vol:'التذبذب',dd:'أقصى انخفاض',time:'الزمن للهدف',error:'خطأ',noTarget:'لم يصل إلى الهدف',yearsWord:'سنوات',source:'المصدر',updated:'التحديث',status:'الحالة',providerFallback:'محاولات المزودين',configured:'✓ مفعّل',notConfigured:'غير مفعّل'},
- es:{name:'Español',dir:'ltr',brand:'Green Room',subtitle:'Inversión e inteligencia de mercado',providersTitle:'🔑 Estado de proveedores API',keysNote:'Las claves API se leen desde el .env local y nunca se guardan en HTML.',companiesTitle:'1. Selector de empresas',companyInfo:"Detalles de la empresa",companySummary:"Resumen de la empresa",companyWebsite:"Sitio web",search:'Buscar empresa o símbolo',selectedLabel:'Seleccionadas:',quoteTitle:'2. 💰 Precio actual',refresh:'🔄 Actualizar ahora',auto:'Actualización automática',every:'Cada',seconds:'segundos',historyTitle:'3. 📈 Historial de precios',targetTitle:'4. 🎯 Tiempo hasta el objetivo',initial:'Capital inicial',monthly:'Aporte mensual',target:'Objetivo',years:'Máximo de años',calcPath:'Calcular ruta por empresa',portfolioTitle:'5. 📊 Ruta de cartera',portfolioHint:'Introduce pesos en el mismo orden, por ejemplo: 40,30,30',calcPortfolio:'Calcular cartera',disclaimer:'Los datos dependen del proveedor, permisos y condiciones. Los escenarios históricos no son pronósticos.',choose:'Selecciona al menos una empresa.',one:'Selecciona una empresa para ver el gráfico histórico.',cagr:'CAGR',vol:'Volatilidad',dd:'Máx. drawdown',time:'Tiempo al objetivo',error:'Error',noTarget:'No alcanzó el objetivo',yearsWord:'años',source:'Fuente',updated:'Actualizado',status:'Estado',providerFallback:'Intentos de proveedores',configured:'✓ Configurado',notConfigured:'No configurado'},
- it:{name:'Italiano',dir:'ltr',brand:'Green Room',subtitle:'Investimenti e analisi di mercato',providersTitle:'🔑 Stato dei provider API',keysNote:'Le chiavi API vengono lette dal file .env locale e non vengono salvate nell’HTML.',companiesTitle:'1. Selettore aziende',companyInfo:"Dettagli azienda",companySummary:"Riepilogo azienda",companyWebsite:"Sito aziendale",search:'Cerca azienda o simbolo',selectedLabel:'Selezionate:',quoteTitle:'2. 💰 Prezzo azione corrente',refresh:'🔄 Aggiorna ora',auto:'Aggiornamento automatico',every:'Ogni',seconds:'secondi',historyTitle:'3. 📈 Storico prezzi',targetTitle:'4. 🎯 Tempo al target',initial:'Capitale iniziale',monthly:'Versamento mensile',target:'Obiettivo',years:'Anni massimi',calcPath:'Calcola percorso per azienda',portfolioTitle:'5. 📊 Percorso portafoglio',portfolioHint:'Inserisci i pesi nello stesso ordine, ad es.: 40,30,30',calcPortfolio:'Calcola portafoglio',disclaimer:'I dati dipendono dal provider, dalle autorizzazioni e dai termini. Gli scenari storici non sono previsioni.',choose:'Seleziona almeno un’azienda.',one:'Seleziona un’azienda per il grafico storico.',cagr:'CAGR',vol:'Volatilità',dd:'Max Drawdown',time:'Tempo al target',error:'Errore',noTarget:'Target non raggiunto',yearsWord:'anni',source:'Fonte',updated:'Aggiornato',status:'Stato',providerFallback:'Tentativi provider',configured:'✓ Configurato',notConfigured:'Non configurato'},
- de:{name:'Deutsch',dir:'ltr',brand:'Green Room',subtitle:'Investment & Marktanalyse',providersTitle:'🔑 API-Anbieterstatus',keysNote:'API-Schlüssel werden aus der lokalen .env gelesen und nicht im HTML gespeichert.',companiesTitle:'1. Unternehmensauswahl',companyInfo:"Unternehmensdetails",companySummary:"Unternehmensprofil",companyWebsite:"Unternehmenswebsite",search:'Unternehmen oder Symbol suchen',selectedLabel:'Ausgewählt:',quoteTitle:'2. 💰 Aktueller Aktienkurs',refresh:'🔄 Jetzt aktualisieren',auto:'Automatische Aktualisierung',every:'Alle',seconds:'Sek.',historyTitle:'3. 📈 Kursverlauf',targetTitle:'4. 🎯 Zeit bis zum Ziel',initial:'Startkapital',monthly:'Monatliche Einzahlung',target:'Ziel',years:'Maximale Jahre',calcPath:'Pfad je Unternehmen berechnen',portfolioTitle:'5. 📊 Portfolio-Pfad',portfolioHint:'Gewichte in derselben Reihenfolge eingeben, z. B. 40,30,30',calcPortfolio:'Portfolio berechnen',disclaimer:'Marktdaten hängen von Anbieter, Berechtigungen und Bedingungen ab. Historische Szenarien sind keine Prognosen.',choose:'Mindestens ein Unternehmen auswählen.',one:'Ein Unternehmen für den historischen Chart auswählen.',cagr:'CAGR',vol:'Volatilität',dd:'Max. Drawdown',time:'Zeit bis zum Ziel',error:'Fehler',noTarget:'Ziel nicht erreicht',yearsWord:'Jahre',source:'Quelle',updated:'Aktualisiert',status:'Status',providerFallback:'Provider-Versuche',configured:'✓ Konfiguriert',notConfigured:'Nicht konfiguriert'},
- tr:{name:'Türkçe',dir:'ltr',brand:'Green Room',subtitle:'Yatırım ve piyasa istihbaratı',providersTitle:'🔑 API sağlayıcı durumu',keysNote:'API anahtarları yerel .env dosyasından okunur ve HTML içinde saklanmaz.',companiesTitle:'1. Şirket seçimi',companyInfo:"Şirket bilgileri",companySummary:"Şirket özeti",companyWebsite:"Şirket web sitesi",search:'Şirket veya sembol ara',selectedLabel:'Seçilen:',quoteTitle:'2. 💰 Güncel hisse fiyatı',refresh:'🔄 Şimdi yenile',auto:'Otomatik yenileme',every:'Her',seconds:'saniye',historyTitle:'3. 📈 Fiyat geçmişi',targetTitle:'4. 🎯 Hedefe ulaşma süresi',initial:'Başlangıç sermayesi',monthly:'Aylık katkı',target:'Hedef',years:'Maksimum yıl',calcPath:'Her şirket için yolu hesapla',portfolioTitle:'5. 📊 Portföy yolu',portfolioHint:'Ağırlıkları seçilen şirketlerle aynı sırada girin, örn. 40,30,30',calcPortfolio:'Portföyü hesapla',disclaimer:'Piyasa verileri sağlayıcıya, yetkilere ve şartlara bağlıdır. Tarihsel senaryolar tahmin değildir.',choose:'En az bir şirket seçin.',one:'Tarihsel grafiği görmek için bir şirket seçin.',cagr:'CAGR',vol:'Volatilite',dd:'Maks. düşüş',time:'Hedefe süre',error:'Hata',noTarget:'Hedefe ulaşmadı',yearsWord:'yıl',source:'Kaynak',updated:'Güncellendi',status:'Durum',providerFallback:'Sağlayıcı denemeleri',configured:'✓ Yapılandırıldı',notConfigured:'Yapılandırılmadı'},
- zh:{name:'中文',dir:'ltr',brand:'Green Room',subtitle:'投资与市场情报',providersTitle:'🔑 API 服务商状态',keysNote:'API 密钥从本地 .env 文件读取，不会保存到 HTML。',companiesTitle:'1. 公司选择',companyInfo:"公司详情",companySummary:"公司简介",companyWebsite:"公司网站",search:'搜索公司或代码',selectedLabel:'已选择：',quoteTitle:'2. 💰 当前股价',refresh:'🔄 立即刷新',auto:'自动刷新',every:'每',seconds:'秒',historyTitle:'3. 📈 价格历史',targetTitle:'4. 🎯 达到目标所需时间',initial:'初始资金',monthly:'每月投入',target:'目标',years:'最长年数',calcPath:'计算各公司的路径',portfolioTitle:'5. 📊 投资组合路径',portfolioHint:'按所选公司顺序输入权重，例如：40,30,30',calcPortfolio:'计算组合',disclaimer:'市场数据取决于服务商、权限和条款。历史情景不是预测。',choose:'至少选择一家公司。',one:'选择一家公司查看历史图表。',cagr:'CAGR',vol:'波动率',dd:'最大回撤',time:'达到目标时间',error:'错误',noTarget:'未达到目标',yearsWord:'年',source:'来源',updated:'更新时间',status:'状态',providerFallback:'服务商尝试',configured:'✓ 已配置',notConfigured:'未配置'},
- ja:{name:'日本語',dir:'ltr',brand:'Green Room',subtitle:'投資と市場インテリジェンス',providersTitle:'🔑 APIプロバイダー状態',keysNote:'APIキーはローカルの.envから読み込み、HTMLには保存しません。',companiesTitle:'1. 企業選択',companyInfo:"会社情報",companySummary:"会社概要",companyWebsite:"会社サイト",search:'企業名またはシンボルを検索',selectedLabel:'選択:',quoteTitle:'2. 💰 現在の株価',refresh:'🔄 今すぐ更新',auto:'自動更新',every:'毎',seconds:'秒',historyTitle:'3. 📈 株価履歴',targetTitle:'4. 🎯 目標到達までの時間',initial:'初期資金',monthly:'毎月の積立',target:'目標',years:'最大年数',calcPath:'企業別に経路を計算',portfolioTitle:'5. 📊 ポートフォリオ経路',portfolioHint:'選択した企業と同じ順序で比率を入力 例: 40,30,30',calcPortfolio:'ポートフォリオを計算',disclaimer:'市場データはプロバイダー、権限、利用規約に依存します。過去シナリオは予測ではありません。',choose:'少なくとも1社を選択してください。',one:'履歴チャートには1社を選択してください。',cagr:'CAGR',vol:'ボラティリティ',dd:'最大ドローダウン',time:'目標までの時間',error:'エラー',noTarget:'目標未達',yearsWord:'年',source:'提供元',updated:'更新',status:'状態',providerFallback:'プロバイダー試行',configured:'✓ 設定済み',notConfigured:'未設定'}
+  he:{name:'עברית',dir:'rtl',brand:'Green Room',subtitle:'השקעות ומודיעין שוק',providersTitle:'🔑 מצב ספקי API',keysNote:'מפתחות API נקראים מקובץ .env המקומי ואינם נשמרים ב־HTML.',companiesTitle:'1. בחירת חברות',companyInfo:"פרטי החברה",companySummary:"תקציר החברה",companyWebsite:"אתר החברה",search:'חפש חברה או Symbol',selectedLabel:'נבחרו:',quoteTitle:'2. 💰 מחיר מניה עדכני',refresh:'🔄 רענן עכשיו',auto:'רענון אוטומטי',every:'כל',seconds:'שניות',historyTitle:'3. 📈 היסטוריית מחיר',targetTitle:'4. 🎯 זמן יעד',initial:'הון התחלתי',monthly:'הפקדה חודשית',target:'יעד',years:'מקסימום שנים',calcPath:'חשב מסלול לכל חברה',portfolioTitle:'5. 📊 מסלול תיק',portfolioHint:'הזן משקלים באותו סדר של החברות שנבחרו, לדוגמה: 40,30,30',calcPortfolio:'חשב מסלול תיק',disclaimer:'נתוני שוק תלויים בספק, בהרשאות ובתנאי השימוש שלו. תרחישים היסטוריים אינם תחזית.',choose:'בחר לפחות חברה אחת.',one:'בחר חברה אחת לפחות כדי להציג גרף היסטורי.',cagr:'CAGR',vol:'תנודתיות',dd:'Max Drawdown',time:'זמן ליעד',error:'שגיאה',noTarget:'לא הגיע ליעד',yearsWord:'שנים',source:'מקור',updated:'עודכן',status:'סטטוס',providerFallback:'ניסיון ספקים',configured:'✓ מוגדר',notConfigured:'לא מוגדר',selectedOne:'בחר חברות',realtime:'REALTIME',historical:'HISTORICAL',eod:'END OF DAY',unavailable:'UNAVAILABLE'},
+  en:{name:'English',dir:'ltr',brand:'Green Room',subtitle:'Investment & Market Intelligence',providersTitle:'🔑 API Provider Status',keysNote:'API keys stay only on the FastAPI server and are never exposed to the static site.',companiesTitle:'1. Company Explorer',companyInfo:"Company details",companySummary:"Company summary",companyWebsite:"Company website",search:'Search company or Symbol',selectedLabel:'Selected:',quoteTitle:'2. 💰 Current Stock Price',refresh:'🔄 Refresh now',auto:'Auto refresh',every:'Every',seconds:'seconds',historyTitle:'3. 📈 Price History',targetTitle:'4. 🎯 Time to Target',initial:'Initial capital',monthly:'Monthly contribution',target:'Target',years:'Maximum years',calcPath:'Calculate path for each company',portfolioTitle:'5. 📊 Portfolio Path',portfolioHint:'Enter weights in the same order as selected companies, e.g. 40,30,30',calcPortfolio:'Calculate portfolio path',disclaimer:'Market data depends on provider, entitlements and terms. Historical scenarios are not forecasts.',choose:'Select at least one company.',one:'Select at least one company to display historical charts.',cagr:'CAGR',vol:'Volatility',dd:'Max Drawdown',time:'Time to target',error:'Error',noTarget:'Target not reached',yearsWord:'years',source:'Source',updated:'Updated',status:'Status',providerFallback:'Provider attempts',configured:'✓ Configured',notConfigured:'Not configured',selectedOne:'Select companies',realtime:'REALTIME',historical:'HISTORICAL',eod:'END OF DAY',unavailable:'UNAVAILABLE'},
+  ru:{name:'Русский',dir:'ltr',brand:'Green Room',subtitle:'Инвестиции и рыночная аналитика',providersTitle:'🔑 Статус API',keysNote:'API-ключи читаются из локального .env и не сохраняются в HTML.',companiesTitle:'1. Выбор компаний',companyInfo:"Сведения о компании",companySummary:"Краткое описание",companyWebsite:"Сайт компании",search:'Поиск компании или символа',selectedLabel:'Выбрано:',quoteTitle:'2. 💰 Текущая цена акции',refresh:'🔄 Обновить',auto:'Автообновление',every:'Каждые',seconds:'сек.',historyTitle:'3. 📈 История цены',targetTitle:'4. 🎯 Время до цели',initial:'Начальный капитал',monthly:'Ежемесячный взнос',target:'Цель',years:'Максимум лет',calcPath:'Рассчитать путь для каждой компании',portfolioTitle:'5. 📊 Путь портфеля',portfolioHint:'Введите веса в порядке выбранных компаний, например: 40,30,30',calcPortfolio:'Рассчитать портфель',disclaimer:'Данные зависят от провайдера и его условий. Исторические сценарии не являются прогнозом.',choose:'Выберите хотя бы одну компанию.',one:'Выберите хотя бы одну компанию для графика.',cagr:'CAGR',vol:'Волатильность',dd:'Макс. просадка',time:'Время до цели',error:'Ошибка',noTarget:'Цель не достигнута',yearsWord:'лет',source:'Источник',updated:'Обновлено',status:'Статус',providerFallback:'Проверка провайдеров',configured:'✓ Настроен',notConfigured:'Не настроен'},
+  ar:{name:'العربية',dir:'rtl',brand:'Green Room',subtitle:'الاستثمار وذكاء السوق',providersTitle:'🔑 حالة مزودي API',keysNote:'تتم قراءة مفاتيح API من ملف .env المحلي ولا تُحفظ في HTML.',companiesTitle:'1. اختيار الشركات',companyInfo:"تفاصيل الشركة",companySummary:"ملخص الشركة",companyWebsite:"موقع الشركة",search:'ابحث عن شركة أو رمز',selectedLabel:'المحدد:',quoteTitle:'2. 💰 سعر السهم الحالي',refresh:'🔄 تحديث الآن',auto:'تحديث تلقائي',every:'كل',seconds:'ثانية',historyTitle:'3. 📈 تاريخ السعر',targetTitle:'4. 🎯 الزمن للوصول إلى الهدف',initial:'رأس المال الابتدائي',monthly:'الإيداع الشهري',target:'الهدف',years:'الحد الأقصى للسنوات',calcPath:'احسب المسار لكل شركة',portfolioTitle:'5. 📊 مسار المحفظة',portfolioHint:'أدخل الأوزان بنفس ترتيب الشركات المختارة، مثال: 40,30,30',calcPortfolio:'احسب مسار المحفظة',disclaimer:'تعتمد بيانات السوق على المزود والصلاحيات وشروط الاستخدام. السيناريوهات التاريخية ليست توقعات.',choose:'اختر شركة واحدة على الأقل.',one:'اختر شركة واحدة على الأقل لعرض الرسم التاريخي.',cagr:'CAGR',vol:'التذبذب',dd:'أقصى انخفاض',time:'الزمن للهدف',error:'خطأ',noTarget:'لم يصل إلى الهدف',yearsWord:'سنوات',source:'المصدر',updated:'التحديث',status:'الحالة',providerFallback:'محاولات المزودين',configured:'✓ مفعّل',notConfigured:'غير مفعّل'},
+  es:{name:'Español',dir:'ltr',brand:'Green Room',subtitle:'Inversión e inteligencia de mercado',providersTitle:'🔑 Estado de proveedores API',keysNote:'Las claves API se leen desde el .env local y nunca se guardan en HTML.',companiesTitle:'1. Selector de empresas',companyInfo:"Detalles de la empresa",companySummary:"Resumen de la empresa",companyWebsite:"Sitio web",search:'Buscar empresa o símbolo',selectedLabel:'Seleccionadas:',quoteTitle:'2. 💰 Precio actual',refresh:'🔄 Actualizar ahora',auto:'Actualización automática',every:'Cada',seconds:'segundos',historyTitle:'3. 📈 Historial de precios',targetTitle:'4. 🎯 Tiempo hasta el objetivo',initial:'Capital inicial',monthly:'Aporte mensual',target:'Objetivo',years:'Máximo de años',calcPath:'Calcular ruta por empresa',portfolioTitle:'5. 📊 Ruta de cartera',portfolioHint:'Introduce pesos en el mismo orden, por ejemplo: 40,30,30',calcPortfolio:'Calcular cartera',disclaimer:'Los datos dependen del proveedor, permisos y condiciones. Los escenarios históricos no son pronósticos.',choose:'Selecciona al menos una empresa.',one:'Selecciona al menos una empresa para ver el gráfico histórico.',cagr:'CAGR',vol:'Volatilidad',dd:'Máx. drawdown',time:'Tiempo al objetivo',error:'Error',noTarget:'No alcanzó el objetivo',yearsWord:'años',source:'Fuente',updated:'Actualizado',status:'Estado',providerFallback:'Intentos de proveedores',configured:'✓ Configurado',notConfigured:'No configurado'},
+  it:{name:'Italiano',dir:'ltr',brand:'Green Room',subtitle:'Investimenti e analisi di mercato',providersTitle:'🔑 Stato dei provider API',keysNote:'Le chiavi API vengono lette dal file .env locale e non vengono salvate nell’HTML.',companiesTitle:'1. Selettore aziende',companyInfo:"Dettagli azienda",companySummary:"Riepilogo azienda",companyWebsite:"Sito aziendale",search:'Cerca azienda o simbolo',selectedLabel:'Selezionate:',quoteTitle:'2. 💰 Prezzo azione corrente',refresh:'🔄 Aggiorna ora',auto:'Aggiornamento automatico',every:'Ogni',seconds:'secondi',historyTitle:'3. 📈 Storico prezzi',targetTitle:'4. 🎯 Tempo al target',initial:'Capitale iniziale',monthly:'Versamento mensile',target:'Obiettivo',years:'Anni massimi',calcPath:'Calcola percorso per azienda',portfolioTitle:'5. 📊 Percorso portafoglio',portfolioHint:'Inserisci i pesi nello stesso ordine, ad es.: 40,30,30',calcPortfolio:'Calcola portafoglio',disclaimer:'I dati dipendono dal provider, dalle autorizzazioni e dai termini. Gli scenari storici non sono previsioni.',choose:'Seleziona almeno un’azienda.',one:'Seleziona almeno un’azienda per il grafico storico.',cagr:'CAGR',vol:'Volatilità',dd:'Max Drawdown',time:'Tempo al target',error:'Errore',noTarget:'Target non raggiunto',yearsWord:'anni',source:'Fonte',updated:'Aggiornato',status:'Stato',providerFallback:'Tentativi provider',configured:'✓ Configurato',notConfigured:'Non configurato'},
+  de:{name:'Deutsch',dir:'ltr',brand:'Green Room',subtitle:'Investment & Marktanalyse',providersTitle:'🔑 API-Anbieterstatus',keysNote:'API-Schlüssel werden aus der lokalen .env gelesen und nicht im HTML gespeichert.',companiesTitle:'1. Unternehmensauswahl',companyInfo:"Unternehmensdetails",companySummary:"Unternehmensprofil",companyWebsite:"Unternehmenswebsite",search:'Unternehmen oder Symbol suchen',selectedLabel:'Ausgewählt:',quoteTitle:'2. 💰 Aktueller Aktienkurs',refresh:'🔄 Jetzt aktualisieren',auto:'Automatische Aktualisierung',every:'Alle',seconds:'Sek.',historyTitle:'3. 📈 Kursverlauf',targetTitle:'4. 🎯 Zeit bis zum Ziel',initial:'Startkapital',monthly:'Monatliche Einzahlung',target:'Ziel',years:'Maximale Jahre',calcPath:'Pfad je Unternehmen berechnen',portfolioTitle:'5. 📊 Portfolio-Pfad',portfolioHint:'Gewichte in derselben Reihenfolge eingeben, z. B. 40,30,30',calcPortfolio:'Portfolio berechnen',disclaimer:'Marktdaten hängen von Anbieter, Berechtigungen und Bedingungen ab. Historische Szenarien sind keine Prognosen.',choose:'Mindestens ein Unternehmen auswählen.',one:'Mindestens ein Unternehmen für den historischen Chart auswählen.',cagr:'CAGR',vol:'Volatilität',dd:'Max. Drawdown',time:'Zeit bis zum Ziel',error:'Fehler',noTarget:'Ziel nicht erreicht',yearsWord:'Jahre',source:'Quelle',updated:'Aktualisiert',status:'Status',providerFallback:'Provider-Versuche',configured:'✓ Konfiguriert',notConfigured:'Nicht konfiguriert'},
+  tr:{name:'Türkçe',dir:'ltr',brand:'Green Room',subtitle:'Yatırım ve piyasa istihbaratı',providersTitle:'🔑 API sağlayıcı durumu',keysNote:'API anahtarları yerel .env dosyasından okunur ve HTML içinde saklanmaz.',companiesTitle:'1. Şirket seçimi',companyInfo:"Şirket bilgileri",companySummary:"Şirket özeti",companyWebsite:"Şirket web sitesi",search:'Şirket veya sembol ara',selectedLabel:'Seçilen:',quoteTitle:'2. 💰 Güncel hisse fiyatı',refresh:'🔄 Şimdi yenile',auto:'Otomatik yenileme',every:'Her',seconds:'saniye',historyTitle:'3. 📈 Fiyat geçmişi',targetTitle:'4. 🎯 Hedefe ulaşma süresi',initial:'Başlangıç sermayesi',monthly:'Aylık katkı',target:'Hedef',years:'Maksimum yıl',calcPath:'Her şirket için yolu hesapla',portfolioTitle:'5. 📊 Portföy yolu',portfolioHint:'Ağırlıkları seçilen şirketlerle aynı sırada girin, örn. 40,30,30',calcPortfolio:'Portföyü hesapla',disclaimer:'Piyasa verileri sağlayıcıya, yetkilere ve şartlara bağlıdır. Tarihsel senaryolar tahmin değildir.',choose:'En az bir şirket seçin.',one:'Tarihsel grafik için en az bir şirket seçin.',cagr:'CAGR',vol:'Volatilite',dd:'Maks. düşüş',time:'Hedefe süre',error:'Hata',noTarget:'Hedefe ulaşmadı',yearsWord:'yıl',source:'Kaynak',updated:'Güncellendi',status:'Durum',providerFallback:'Sağlayıcı denemeleri',configured:'✓ Yapılandırıldı',notConfigured:'Yapılandırılmadı'},
+  zh:{name:'中文',dir:'ltr',brand:'Green Room',subtitle:'投资与市场情报',providersTitle:'🔑 API 服务商状态',keysNote:'API 密钥从本地 .env 文件读取，不会保存到 HTML。',companiesTitle:'1. 公司选择',companyInfo:"公司详情",companySummary:"公司简介",companyWebsite:"公司网站",search:'搜索公司或代码',selectedLabel:'已选择：',quoteTitle:'2. 💰 当前股价',refresh:'🔄 立即刷新',auto:'自动刷新',every:'每',seconds:'秒',historyTitle:'3. 价格历史',targetTitle:'4. 🎯 达到目标所需时间',initial:'初始资金',monthly:'每月投入',target:'目标',years:'最长年数',calcPath:'计算各公司的路径',portfolioTitle:'5. 📊 投资组合路径',portfolioHint:'按所选公司顺序输入权重，例如：40,30,30',calcPortfolio:'计算组合',disclaimer:'市场数据取决于服务商、权限和条款。历史情景不是预测。',choose:'至少选择一家公司。',one:'请选择至少一家公司以显示历史图表。',cagr:'CAGR',vol:'波动率',dd:'最大回撤',time:'达到目标时间',error:'错误',noTarget:'未达到目标',yearsWord:'年',source:'来源',updated:'更新时间',status:'状态',providerFallback:'服务商尝试',configured:'✓ 已配置',notConfigured:'未配置'},
+  ja:{name:'日本語',dir:'ltr',brand:'Green Room',subtitle:'投資と市場インテリジェンス',providersTitle:'🔑 APIプロバイダー状態',keysNote:'APIキーはローカルの.envから読み込み、HTMLには保存しません。',companiesTitle:'1. 企業選択',companyInfo:"会社情報",companySummary:"会社概要",companyWebsite:"会社サイト",search:'企業名またはシンボルを検索',selectedLabel:'選択:',quoteTitle:'2. 💰 現在の株価',refresh:'🔄 今すぐ更新',auto:'自動更新',every:'毎',seconds:'秒',historyTitle:'3. 📈 株価履歴',targetTitle:'4. 🎯 目標到達までの時間',initial:'初期資金',monthly:'毎月の積立',target:'目標',years:'最大年数',calcPath:'企業別に経路を計算',portfolioTitle:'5. 📊 ポートフォリオ経路',portfolioHint:'選択した企業と同じ順序で比率を入力 例: 40,30,30',calcPortfolio:'ポートフォリオを計算',disclaimer:'市場データはプロバイダー、権限、利用規約に依存します。過去シナリオは予測ではありません。',choose:'少なくとも1社を選択してください。',one:'履歴チャートを表示するには少なくとも1社を選択してください。',cagr:'CAGR',vol:'ボラティリティ',dd:'最大ドローダウン',time:'目標までの時間',error:'エラー',noTarget:'目標未達',yearsWord:'年',source:'提供元',updated:'更新',status:'状態',providerFallback:'プロバイダー試行',configured:'✓ 設定済み',notConfigured:'未設定'}
 };
-let lang=localStorage.getItem('greenroom_lang')||'he', companies=[],sel=[],histChart,portChart,autoTimer=null,refreshSeconds=15,logoCache={},searchTimer=null,searchSeq=0;
+
+let lang=localStorage.getItem('greenroom_lang')||'he', companies=[], sel=[], histChart, portChart, autoTimer=null, refreshSeconds=15, logoCatalog={}, searchTimer=null;
 const $=id=>document.getElementById(id), t=k=>(I18N[lang]&&I18N[lang][k])||I18N.en[k]||k;
-function setupLangs(){const keys=Object.keys(I18N);$('langs').innerHTML=keys.map(k=>`<button class="${k===lang?'active':''}" onclick="setLang('${k}')">${I18N[k].name}</button>`).join('')}
-function setLang(k){lang=k;window.lang=k;localStorage.setItem('greenroom_lang',k);document.documentElement.lang=k;document.documentElement.dir=I18N[k].dir;document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));document.querySelectorAll('[data-ph]').forEach(e=>e.placeholder=t(e.dataset.ph));$('brandTitle').textContent=t('brand');$('subtitle').textContent=t('subtitle');setupLangs();renderProviders(lastProviders||[]);renderCompanies();refreshQuotes();loadHistory();}
+
+function setupLangs(){
+  const keys=Object.keys(I18N);
+  $('langs').innerHTML=keys.map(k=>`<button class="${k===lang?'active':''}" onclick="setLang('${k}')">${I18N[k].name}</button>`).join('');
+}
+
+function setLang(k){
+  lang=k; window.lang=k; localStorage.setItem('greenroom_lang',k);
+  document.documentElement.lang=k; document.documentElement.dir=I18N[k].dir;
+  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll('[data-ph]').forEach(e=>e.placeholder=t(e.dataset.ph));
+  $('brandTitle').textContent=t('brand'); $('subtitle').textContent=t('subtitle');
+  setupLangs(); renderProviders(lastProviders||[]); renderCompanies(); refreshQuotes(); loadHistory();
+}
+
 let lastProviders=[];
 async function init(){
   setupLangs();
@@ -58,46 +126,228 @@ async function init(){
   renderCompanies();
   await refreshQuotes();
 }
-function renderProviders(ps){if(!ps.length){$('providers').innerHTML='<div class="warn">FastAPI is optional. The 129-company catalog is loaded locally; live market data is enabled after setting GREEN_ROOM_API_BASE.</div>';return}$('providers').innerHTML=ps.map(p=>`<div class="metric"><b>${p.provider}</b><br><span class="pill ${p.configured?'ok':'bad'}">${p.configured?t('configured'):t('notConfigured')}</span></div>`).join('')}
-let logoCatalog={};
-async function loadLogoCatalog(){try{const r=await fetch('./static/logos/index.json');if(r.ok)logoCatalog=await r.json()}catch(e){logoCatalog={}}}
-async function loadProviders(){const el=document.getElementById('providers');if(!el)return;try{const r=await fetch(apiUrl('/api/providers'));if(!r.ok)throw 0;const d=await r.json();el.innerHTML=(d.providers||[]).map(p=>`<div class=\"metric\"><b>${escHtml(p.name)}</b><div class=\"status ${p.configured?'up':'muted'}\">${p.configured?'✓ Configured':'Not configured'}</div><div class=\"small\">${escHtml(p.freshness||'')}</div></div>`).join('')}catch(e){el.innerHTML='<div class=\"warn\">FastAPI server is not connected. Static company catalog remains available.</div>'}}
+
+async function loadLogoCatalog(){
+  try{const r=await fetch('./static/logos/index.json');if(r.ok)logoCatalog=await r.json()}catch(e){logoCatalog={}}
+}
+
 function localLogoFor(c){
   const key=c.symbol||''; const meta=logoCatalog[key]||{};
   if(meta.file) return './static/logos/'+meta.file;
   return './static/logos/'+key.replace(/\//g,'_').replace(/-/g,'_')+'.svg';
 }
-function cdnLogoFor(c){const meta=logoCatalog[c.symbol]||{};return meta.slug?'https://cdn.simpleicons.org/'+encodeURIComponent(meta.slug):'';}
-function initials(name){return (name||'?').split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
+
+function cdnLogoFor(c){
+  const meta=logoCatalog[c.symbol]||{};
+  return meta.slug?'https://cdn.simpleicons.org/'+encodeURIComponent(meta.slug):'';
+}
+
+function initials(name){
+  return (name||'?').split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+}
+
 function logoHtml(c){
   const src=localLogoFor(c);
   const fallback=initials(c.name||c.symbol);
   const safe=String(fallback).replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  return `<img class=\"logo\" src=\"${src}\" alt=\"${String(c.name||c.symbol).replace(/\"/g,'&quot;')}\" loading=\"lazy\" onerror=\"this.style.display='none';this.nextElementSibling.style.display='grid'\"><span class=\"logoFallback\" style=\"display:none\">${safe}</span>`;
+  return `<img class="logo" src="${src}" alt="${String(c.name||c.symbol).replace(/"/g,'&quot;')}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="logoFallback" style="display:none">${safe}</span>`;
 }
-function renderCompanies(){let q=$('search').value.trim().toLowerCase();let list=companies.filter(c=>(c.name+' '+c.symbol+' '+(c.market||'')+' '+(c.exchange||'')+' '+(c.country||'')).toLowerCase().includes(q));$('companies').innerHTML=list.map((c,i)=>{let id='logo-'+i+'-'+c.symbol.replace(/[^a-zA-Z0-9]/g,'_');return `<button type="button" class="company ${sel.includes(c.symbol)?'selected':''}" onclick="toggle('${c.symbol.replace(/'/g,"\\'")}')" aria-pressed="${sel.includes(c.symbol)}"><span class="companyTop">${logoHtml(c)}</span><b>${c.symbol}</b><br>${c.name}<br><small>${c.exchange||c.market||''}${c.country?' · '+c.country:''}</small><br><span class="small muted" role="button" tabindex="0" onclick="event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\'")}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\'")}')}">ⓘ ${t('companyInfo')}</span></button>`}).join('');$('selected').textContent=sel.length}
-async function searchCompanies(){clearTimeout(searchTimer);let q=$('search').value.trim().toLowerCase();if(q.length<1){renderCompanies();return}searchTimer=setTimeout(()=>{const filtered=companies.filter(c=>(c.name+' '+c.symbol+' '+(c.market||'')+' '+(c.exchange||'')+' '+(c.country||'')).toLowerCase().includes(q));$('companies').innerHTML=filtered.map((c,i)=>`<button type="button" class="company ${sel.includes(c.symbol)?'selected':''}" onclick="toggle('${c.symbol.replace(/'/g,"\\'")}')" aria-pressed="${sel.includes(c.symbol)}"><span class="companyTop">${logoHtml(c)}</span><b>${c.symbol}</b><br>${c.name}<br><small>${c.exchange||c.market||''}${c.country?' · '+c.country:''}</small><br><span class="small muted" role="button" tabindex="0" onclick="event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\'")}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\'")}')}">ⓘ ${t('companyInfo')}</span></button>`).join('')},80)}
-function toggle(s){sel=sel.includes(s)?sel.filter(x=>x!==s):[...sel,s];renderCompanies();refreshQuotes();loadHistory()}
-function apiUrl(path){const base=(window.GREEN_ROOM_API_BASE||'').replace(/\/$/,'');return base+(path.startsWith('/')?path:'/ '+path).replace('/ ','/')}
-async function refreshQuotes(){if(!sel.length){$('quotes').innerHTML='<div class="metric">'+t('choose')+'</div>';return}try{const r=await fetch(apiUrl('/api/quotes?symbols='+encodeURIComponent(sel.join(','))));if(!r.ok)throw 0;const d=await r.json();$('quotes').innerHTML=d.quotes.map(q=>{let cls=q.percent_change>0?'up':q.percent_change<0?'down':'';let p=q.price==null?'—':Number(q.price).toLocaleString(undefined,{maximumFractionDigits:4});let ch=q.change==null?'':` ${q.change>=0?'+':''}${Number(q.change).toFixed(4)} (${q.percent_change==null?'':q.percent_change.toFixed(2)+'%'})`;return `<div class="metric"><b>${q.symbol}</b><div class="price ${cls}">${p} ${q.currency||''}</div><div class="${cls}">${ch}</div><div class="status">${q.freshness||t('unavailable')}</div><div class="small">${t('source')}: ${q.provider||'—'}<br>${t('updated')}: ${q.timestamp||'—'}</div></div>`}).join('')}catch(e){$('quotes').innerHTML='<div class="warn">GitHub Pages mode: live quotes are not available from the static site. Use the FastAPI version for live prices.</div>'}}
-function setAuto(){clearInterval(autoTimer);if($('auto').checked)autoTimer=setInterval(refreshQuotes,refreshSeconds*1000)}
-async function loadHistory(){if(sel.length!==1){$('historyInfo').innerHTML='<p class="muted">'+t('one')+'</p>';return}try{const r=await fetch(apiUrl(`/api/history?symbol=${encodeURIComponent(sel[0])}&period=${$('period').value}`));if(!r.ok)throw 0;const d=await r.json();if(d.error){$('historyInfo').textContent=d.error;return}if(histChart)histChart.destroy();histChart=new Chart($('historyChart'),{type:'line',data:{labels:d.points.map(x=>x.date),datasets:[{label:`${d.symbol} — ${d.period}`,data:d.points.map(x=>x.close),tension:.15,pointRadius:0}]},options:{responsive:true,interaction:{mode:'index',intersect:false}}});$('historyInfo').innerHTML=`<p class="small">${t('source')}: ${d.provider} · ${d.freshness} · ${d.points.length} ${t('selectedLabel')}</p>`}catch(e){$('historyInfo').innerHTML='<div class="warn">GitHub Pages mode: historical market data requires the FastAPI server version.</div>'}}
-async function runPath(){if(!sel.length)return alert(t('choose'));let u=new URL(apiUrl('/api/dynamic-path'));u.searchParams.set('symbols',sel.join(','));u.searchParams.set('initial',$('initial').value);u.searchParams.set('monthly',$('monthly').value);u.searchParams.set('target',$('target').value);u.searchParams.set('max_years',$('years').value);let d=await (await fetch(u)).json();$('out').innerHTML='<div class="warn">'+t('disclaimer')+'</div><div class="results"><table><tr><th>Symbol</th><th>'+t('cagr')+'</th><th>'+t('vol')+'</th><th>'+t('dd')+'</th><th>'+t('time')+'</th></tr>'+d.results.map(r=>`<tr><td>${r.symbol}</td><td>${r.error?'—':(r.historical_cagr*100).toFixed(2)+'%'}</td><td>${r.error?'—':(r.volatility*100).toFixed(2)+'%'}</td><td>${r.error?'—':(r.max_drawdown*100).toFixed(2)+'%'}</td><td>${r.error?t('error'):r.years_to_target==null?t('noTarget'):r.years_to_target+' '+t('yearsWord')}</td></tr>`).join('')+'</table></div>'}
-async function runPortfolio(){if(!sel.length)return alert(t('choose'));let u=new URL(apiUrl('/api/portfolio-path'));u.searchParams.set('symbols',sel.join(','));u.searchParams.set('weights',$('weights').value);u.searchParams.set('initial',$('initial').value);u.searchParams.set('monthly',$('monthly').value);u.searchParams.set('years',$('portyears').value);let d=await (await fetch(u)).json();if(d.error)return $('portout').innerHTML='<p>'+d.error+'</p>';$('portout').innerHTML=`<p>${t('cagr')}: <b>${(d.historical_cagr*100).toFixed(2)}%</b> | ${t('vol')}: <b>${(d.volatility*100).toFixed(2)}%</b></p>`;if(portChart)portChart.destroy();portChart=new Chart($('chart'),{type:'line',data:{labels:d.path.map(x=>x.month),datasets:[{label:t('portfolioTitle'),data:d.path.map(x=>x.value),tension:.15}]},options:{responsive:true}})}
-init().then(()=>{setAuto();loadProviders()});
+
+function renderCompanies(){
+  let q=$('search').value.trim().toLowerCase();
+  let list=companies.filter(c=>(c.name+' '+c.symbol+' '+(c.market||'')+' '+(c.exchange||'')+' '+(c.country||'')).toLowerCase().includes(q));
+  $('companies').innerHTML=list.map((c,i)=>{
+    return `<button type="button" class="company ${sel.includes(c.symbol)?'selected':''}" onclick="toggle('${c.symbol.replace(/'/g,"\\'")}')" aria-pressed="${sel.includes(c.symbol)}"><span class="companyTop">${logoHtml(c)}</span><b>${c.symbol}</b><br>${c.name}<br><small>${c.exchange||c.market||''}${c.country?' · '+c.country:''}</small><br><span class="small muted" role="button" tabindex="0" onclick="event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\\'")}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\\'")}')}">ⓘ ${t('companyInfo')}</span></button>`;
+  }).join('');
+  $('selected').textContent=sel.length;
+}
+
+async function searchCompanies(){
+  clearTimeout(searchTimer);
+  let q=$('search').value.trim().toLowerCase();
+  if(q.length<1){renderCompanies();return}
+  searchTimer=setTimeout(()=>{
+    const filtered=companies.filter(c=>(c.name+' '+c.symbol+' '+(c.market||'')+' '+(c.exchange||'')+' '+(c.country||'')).toLowerCase().includes(q));
+    $('companies').innerHTML=filtered.map((c,i)=>`<button type="button" class="company ${sel.includes(c.symbol)?'selected':''}" onclick="toggle('${c.symbol.replace(/'/g,"\\'")}')" aria-pressed="${sel.includes(c.symbol)}"><span class="companyTop">${logoHtml(c)}</span><b>${c.symbol}</b><br>${c.name}<br><small>${c.exchange||c.market||''}${c.country?' · '+c.country:''}</small><br><span class="small muted" role="button" tabindex="0" onclick="event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\\'")}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();openCompany('${c.symbol.replace(/'/g,"\\'")}')}">ⓘ ${t('companyInfo')}</span></button>`).join('');
+  },80);
+}
+
+function toggle(s){
+  sel=sel.includes(s)?sel.filter(x=>x!==s):[...sel,s];
+  renderCompanies(); refreshQuotes(); loadHistory();
+}
+
+function apiUrl(path){
+  const base=(window.GREEN_ROOM_API_BASE||'').replace(/\/$/,'');
+  return base+(path.startsWith('/')?path:'/'+path);
+}
+
+async function refreshQuotes(){
+  if(!sel.length){$('quotes').innerHTML='<div class="metric">'+t('choose')+'</div>';return}
+  try{
+    const r=await fetch(apiUrl('/api/quotes?symbols='+encodeURIComponent(sel.join(','))));
+    if(!r.ok) throw 0;
+    const d=await r.json();
+    $('quotes').innerHTML=d.quotes.map(q=>{
+      let cls=q.percent_change>0?'up':q.percent_change<0?'down':'';
+      let p=q.price==null?'—':Number(q.price).toLocaleString(undefined,{maximumFractionDigits:4});
+      let ch=q.change==null?'':` ${q.change>=0?'+':''}${Number(q.change).toFixed(4)} (${q.percent_change==null?'':q.percent_change.toFixed(2)+'%'})`;
+      return `<div class="metric"><b>${q.symbol}</b><div class="price ${cls}">${p} ${q.currency||''}</div><div class="${cls}">${ch}</div><div class="status">${q.freshness||t('unavailable')}</div><div class="small">${t('source')}: ${q.provider||'—'}<br>${t('updated')}: ${q.timestamp||'—'}</div></div>`;
+    }).join('');
+  }catch(e){
+    $('quotes').innerHTML='<div class="warn">GitHub Pages mode: live quotes are not available from the static site. Use the FastAPI version for live prices.</div>';
+  }
+}
+
+function setAuto(){
+  clearInterval(autoTimer);
+  if($('auto').checked) autoTimer=setInterval(refreshQuotes,refreshSeconds*1000);
+}
+
+// פלטת צבעים מובנית לגרף ההיסטורי עבור מספר חברות
+const CHART_COLORS = [
+  '#1f6feb', '#087f5b', '#e67700', '#ae3ec9', '#f08c00',
+  '#2b8a3e', '#1098ad', '#6741d9', '#d63384', '#e03131'
+];
+
+async function loadHistory(){
+  if(!sel.length){
+    $('historyInfo').innerHTML='<p class="muted">'+t('one')+'</p>';
+    if(histChart) histChart.destroy();
+    return;
+  }
+  try{
+    const promises = sel.map(symbol =>
+      fetch(apiUrl(`/api/history?symbol=${encodeURIComponent(symbol)}&period=${$('period').value}`))
+        .then(r => r.ok ? r.json() : null)
+    );
+    const results = await Promise.all(promises);
+    const validData = results.filter(d => d && !d.error && d.points && d.points.length > 0);
+
+    if(!validData.length){
+      $('historyInfo').innerHTML='<div class="warn">'+t('error')+'</div>';
+      if(histChart) histChart.destroy();
+      return;
+    }
+
+    const labels = validData[0].points.map(x => x.date);
+    const datasets = validData.map((d, index) => {
+      const color = CHART_COLORS[index % CHART_COLORS.length];
+      return {
+        label: `${d.symbol} — ${d.period}`,
+        data: d.points.map(x => x.close),
+        borderColor: color,
+        backgroundColor: color,
+        tension: .15,
+        pointRadius: 0
+      };
+    });
+
+    if(histChart) histChart.destroy();
+    histChart = new Chart($('historyChart'),{
+      type:'line',
+      data:{ labels, datasets },
+      options:{
+        responsive:true,
+        interaction:{mode:'index',intersect:false},
+        plugins:{ legend:{ display:true } }
+      }
+    });
+
+    $('historyInfo').innerHTML=`<p class="small">${t('source')}: Loaded ${validData.length} companies with distinct colors</p>`;
+  }catch(e){
+    $('historyInfo').innerHTML='<div class="warn">GitHub Pages mode: historical market data requires the FastAPI server version.</div>';
+  }
+}
+
+async function runPath(){
+  if(!sel.length)return alert(t('choose'));
+  let u=new URL(apiUrl('/api/dynamic-path'));
+  u.searchParams.set('symbols',sel.join(','));
+  u.searchParams.set('initial',$('initial').value);
+  u.searchParams.set('monthly',$('monthly').value);
+  u.searchParams.set('target',$('target').value);
+  u.searchParams.set('max_years',$('years').value);
+  let d=await (await fetch(u)).json();
+  $('out').innerHTML='<div class="warn">'+t('disclaimer')+'</div><div class="results"><table><tr><th>Symbol</th><th>'+t('cagr')+'</th><th>'+t('vol')+'</th><th>'+t('dd')+'</th><th>'+t('time')+'</th></tr>'+d.results.map(r=>`<tr><td>${r.symbol}</td><td>${r.error?'—':(r.historical_cagr*100).toFixed(2)+'%'}</td><td>${r.error?'—':(r.volatility*100).toFixed(2)+'%'}</td><td>${r.error?'—':(r.max_drawdown*100).toFixed(2)+'%'}</td><td>${r.error?t('error'):r.years_to_target==null?t('noTarget'):r.years_to_target+' '+t('yearsWord')}</td></tr>`).join('')+'</table></div>';
+}
+
+async function runPortfolio(){
+  if(!sel.length) return alert(t('choose'));
+  let u = new URL(apiUrl('/api/portfolio-path'));
+  u.searchParams.set('symbols',sel.join(','));
+  u.searchParams.set('weights',$('weights').value);
+  u.searchParams.set('initial',$('initial').value);
+  u.searchParams.set('monthly',$('monthly').value);
+  u.searchParams.set('years',$('portyears').value);
+  
+  let d = await (await fetch(u)).json();
+  if(d.error) return $('portout').innerHTML='<p>'+d.error+'</p>';
+  $('portout').innerHTML=`<p>${t('cagr')}: <b>${(d.historical_cagr*100).toFixed(2)}%</b> | ${t('vol')}: <b>${(d.volatility*100).toFixed(2)}%</b></p>`;
+  
+  if(portChart) portChart.destroy();
+  portChart = new Chart($('chart'),{
+    type:'line',
+    data:{
+      labels:d.path.map(x=>x.month),
+      datasets:[{
+        label:t('portfolioTitle'),
+        data:d.path.map(x=>x.value),
+        borderColor:'#1f6feb',
+        backgroundColor:'rgba(31, 111, 235, 0.1)',
+        fill:true,
+        tension:.15
+      }]
+    },
+    options:{responsive:true}
+  });
+}
+
+init().then(()=>{setAuto();});
 </script>
+
 <div id="companyModal" class="companyModal" aria-hidden="true" onclick="if(event.target===this)closeCompany()">
   <div class="companyModalBox" role="dialog" aria-modal="true" aria-labelledby="companyModalTitle">
     <button class="companyModalClose" onclick="closeCompany()" aria-label="Close">×</button>
     <div id="companyModalContent"></div>
   </div>
 </div>
+
 <script>
-function escHtml(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#039;')}
-function openCompany(symbol){const c=companies.find(x=>x.symbol===symbol);if(!c)return;const currentUiLang=(typeof window.lang!=='undefined'?window.lang:'he');const summary=c.summary?.[currentUiLang]||c.summary?.he||c.summary?.en||'';const meta=logoCatalog[c.symbol]||{};const logo=meta.file?`./static/logos/${meta.file}`:cdnLogoFor(c);const site=meta.slug?`https://www.${meta.slug}.com`:'';
- const websiteMap={'AAPL':'https://www.apple.com','MSFT':'https://www.microsoft.com','NVDA':'https://www.nvidia.com','AMZN':'https://www.amazon.com','GOOGL':'https://www.google.com','GOOG':'https://www.google.com','META':'https://about.meta.com','TSLA':'https://www.tesla.com','AVGO':'https://www.broadcom.com','AMD':'https://www.amd.com','NFLX':'https://www.netflix.com','ADBE':'https://www.adobe.com','CRM':'https://www.salesforce.com','ORCL':'https://www.oracle.com','CSCO':'https://www.cisco.com','INTC':'https://www.intel.com','QCOM':'https://www.qualcomm.com','ASML':'https://www.asml.com','TSM':'https://www.tsmc.com','ARM':'https://www.arm.com','JPM':'https://www.jpmorganchase.com','BAC':'https://www.bankofamerica.com','V':'https://www.visa.com','MA':'https://www.mastercard.com','WMT':'https://www.walmart.com','KO':'https://www.coca-colacompany.com','PEP':'https://www.pepsico.com','IBM':'https://www.ibm.com'};
- const href=websiteMap[c.symbol]||'';document.getElementById('companyModalContent').innerHTML=`<div class="modalHero">${logo?`<img class="modalLogo" src="${escHtml(logo)}" onerror="this.src='${escHtml(cdnLogoFor(c))}'">`:''}<div><div class="modalSymbol">${escHtml(c.symbol)}</div><h2 id="companyModalTitle">${escHtml(c.name)}</h2><div class="muted">${escHtml(c.exchange||c.market||'')}${c.country?' · '+escHtml(c.country):''}</div></div></div><div class="modalSection"><h3>${t('companySummary')}</h3><p>${escHtml(summary)}</p></div><div class="modalFacts"><div><span>${t('source')}</span><b>${escHtml(meta.source||'Local company catalog')}</b></div><div><span>Symbol</span><b>${escHtml(c.symbol)}</b></div><div><span>Currency</span><b>${escHtml(c.currency||'')}</b></div></div>${href?`<a class="companyWebsite" href="${href}" target="_blank" rel="noopener noreferrer">🌐 ${t('companyWebsite')}</a>`:''}<div class="modalDisclaimer">${t('disclaimer')}</div>`;const m=document.getElementById('companyModal');m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.classList.add('modal-open')}
-function closeCompany(){const m=document.getElementById('companyModal');m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCompany()});
+function escHtml(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+function openCompany(symbol){
+  const c=companies.find(x=>x.symbol===symbol); if(!c)return;
+  const currentUiLang=(typeof window.lang!=='undefined'?window.lang:'he');
+  const summary=c.summary?.[currentUiLang]||c.summary?.he||c.summary?.en||'';
+  const meta=logoCatalog[c.symbol]||{};
+  const logo=meta.file?`./static/logos/${meta.file}`:cdnLogoFor(c);
+  
+  $('companyModalContent').innerHTML=`
+    <div class="modalHero">
+      <img class="modalLogo" src="${logo}" alt="" onerror="this.style.display='none'">
+      <div>
+        <div class="modalSymbol">${escHtml(c.symbol)}</div>
+        <h2 id="companyModalTitle">${escHtml(c.name)}</h2>
+        <div class="muted">${escHtml(c.exchange||c.market||'')} ${c.country?'· '+escHtml(c.country):''}</div>
+      </div>
+    </div>
+    <div class="modalSection">
+      <h3>${t('companySummary')}</h3>
+      <p>${escHtml(summary||'No summary available.')}</p>
+    </div>
+    <div class="modalFacts">
+      <div><span>Sector</span><b>${escHtml(c.sector||'—')}</b></div>
+      <div><span>Industry</span><b>${escHtml(c.industry||'—')}</b></div>
+      <div><span>Market Cap</span><b>${escHtml(c.market_cap||'—')}</b></div>
+    </div>
+  `;
+  $('companyModal`').classList.add('open');
+  document.body.classList.add('modal-open');
+}
+function closeCompany(){
+  $('companyModal').classList.remove('open');
+  document.body.classList.remove('modal-open');
+}
 </script>
-</body></html>
+</body>
+</html>
