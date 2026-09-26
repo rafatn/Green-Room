@@ -55,10 +55,6 @@ input,button,select{padding:10px;border:1px solid #ccd5e0;border-radius:10px;mar
 @media(max-width:600px){.v5-chart-wrap{height:260px}}
 </style>
 
-
-<style id="v6css">
-.v6dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.v6stat{background:#f7f9fc;border:1px solid var(--line);border-radius:14px;padding:14px}.v6stat span{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}.v6stat b{font-size:20px}.v6bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.v6bar button{cursor:pointer}.v6check{position:absolute;top:8px;inset-inline-start:8px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--line);z-index:2}.company.selected .v6check{background:var(--accent);color:#fff;border-color:var(--accent)}.v6info{position:absolute!important;bottom:5px;inset-inline-end:5px;padding:5px 8px!important;font-size:12px}.v6weights{display:flex;flex-direction:column;gap:8px}.v6w{display:grid;grid-template-columns:85px 1fr 58px;gap:8px;align-items:center}.v6w input{margin:0}.v6sum{font-weight:800;margin-top:8px}.v6chartbox{height:320px;position:relative}@media(max-width:650px){.v6w{grid-template-columns:65px 1fr 55px}}
-</style>
 </head>
 <body>
 <div class="wrap">
@@ -111,9 +107,6 @@ input,button,select{padding:10px;border:1px solid #ccd5e0;border-radius:10px;mar
 <input id="weights" placeholder="40,30,30"><input id="portyears" type="number" value="5">
 <button onclick="runPortfolio()" data-i="calcPortfolio"></button><div id="portout"></div><canvas id="chart"></canvas>
 </div>
-
-<div class="card"><h2>📊 V6 Dashboard</h2><div class="v6dash"><div class="v6stat"><span>חברות שנבחרו</span><b id="v6count">0</b></div><div class="v6stat"><span>ציטוטים זמינים</span><b id="v6quotes">—</b></div><div class="v6stat"><span>מצב API</span><b id="v6api">—</b></div><div class="v6stat"><span>מצב גרפים</span><b id="v6charts">—</b></div></div></div>
-<div class="card"><h2>🥧 V6 Portfolio Builder</h2><div id="v6weights" class="v6weights"></div><div class="v6sum">סה״כ: <span id="v6sum">0%</span></div><div class="v6bar"><button onclick="v6Equal()">משקל שווה</button><button onclick="v6Normalize()">נרמל ל־100%</button></div><div class="v6chartbox"><canvas id="v6pie"></canvas></div></div>
 <footer class="footer">Green Room · <span data-i="disclaimer"></span></footer>
 </div>
 
@@ -249,19 +242,6 @@ async function init(){
  await loadLogoCatalog();$('intervalLabel').textContent=refreshSeconds;renderCompanies();renderHistoryChips();await refreshQuotes();
 }
 init().then(()=>{setAuto();loadProviders()});
-</script>
-
-<script id="v6js">
-const V6C=['#2563eb','#dc2626','#16a34a','#9333ea','#ea580c','#0891b2','#ca8a04','#db2777','#4f46e5','#059669','#7c3aed','#b91c1c'];let v6pie=null;
-function v6color(s){return V6C[Math.max(0,sel.indexOf(s))%V6C.length]}
-function v6cards(){document.querySelectorAll('#companies .company').forEach(card=>{let oc=card.getAttribute('onclick')||'';let m=oc.match(/openCompany\('([^']+)\)/);if(!m)return;let s=m[1];card.setAttribute('onclick',`toggle('${s.replaceAll("'","\\'")}')`);if(!card.querySelector('.v6check')){let x=document.createElement('span');x.className='v6check';card.prepend(x);let b=document.createElement('button');b.type='button';b.className='v6info';b.textContent='ℹ️ מידע';b.onclick=e=>{e.stopPropagation();openCompany(s)};card.appendChild(b)}card.querySelector('.v6check').textContent=sel.includes(s)?'✓':''})}
-function v6weights(){let h=$('v6weights');if(!h)return;if(!sel.length){h.innerHTML='<div class="warn">בחר חברות כדי להגדיר משקלים.</div>';v6chart();return}let eq=Math.round(100/sel.length);h.innerHTML=sel.map(s=>`<div class="v6w"><b style="color:${v6color(s)}">${s}</b><input type="range" min="0" max="100" value="${eq}" oninput="v6set('${s}',this.value)"><input id="v6n_${s.replace(/[^a-zA-Z0-9]/g,'_')}" type="number" min="0" max="100" value="${eq}" oninput="v6set('${s}',this.value)"></div>`).join('');v6chart()}
-function v6set(s,v){let id='v6n_'+s.replace(/[^a-zA-Z0-9]/g,'_'),n=Math.max(0,Math.min(100,Number(v)||0));if($(id))$(id).value=n;document.querySelectorAll('.v6w input[type=range]').forEach(x=>{if(x.closest('.v6w').querySelector('b')?.textContent===s)x.value=n});v6chart()}
-function v6rows(){return sel.map(s=>({s,w:Number($('v6n_'+s.replace(/[^a-zA-Z0-9]/g,'_'))?.value)||0}))}
-function v6chart(){let rows=v6rows(),sum=rows.reduce((a,x)=>a+x.w,0);if($('v6sum'))$('v6sum').textContent=sum.toFixed(0)+'%';if(v6pie)v6pie.destroy();let c=$('v6pie');if(!c)return;v6pie=new Chart(c,{type:'doughnut',data:{labels:rows.map(x=>x.s),datasets:[{data:rows.map(x=>x.w),backgroundColor:rows.map(x=>v6color(x.s))}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}})}
-function v6Equal(){if(!sel.length)return;let x=(100/sel.length).toFixed(0);sel.forEach(s=>v6set(s,x))}
-function v6Normalize(){let r=v6rows(),sum=r.reduce((a,x)=>a+x.w,0);if(!sum)return;r.forEach(x=>v6set(x.s,(x.w/sum*100).toFixed(0)))}
-const oldRender=window.renderCompanies;window.renderCompanies=function(){oldRender();setTimeout(()=>{v6cards();v6weights();v6dash()},0)};const oldToggle=window.toggle;window.toggle=function(s){oldToggle(s);setTimeout(()=>{v6cards();v6weights();v6dash()},50)};function v6dash(){if($('v6count'))$('v6count').textContent=sel.length;if($('v6quotes'))$('v6quotes').textContent=document.querySelectorAll('#quotes .metric').length||'—';if($('v6api'))$('v6api').textContent=window.GREEN_ROOM_API_BASE?'מחובר':'סטטי';if($('v6charts'))$('v6charts').textContent=sel.length?'פעיל':'ממתין'}setTimeout(()=>{v6cards();v6weights();v6dash()},1000);
 </script>
 </body>
 </html>
